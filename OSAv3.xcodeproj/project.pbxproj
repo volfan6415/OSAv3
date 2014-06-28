@@ -23,6 +23,13 @@
 		0E2A53C2195B898F00987B3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2A539E195B898E00987B3C /* UIKit.framework */; };
 		0E2A53CA195B898F00987B3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A53C8195B898F00987B3C /* InfoPlist.strings */; };
 		0E2A53CC195B898F00987B3C /* OSAv3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A53CB195B898F00987B3C /* OSAv3Tests.m */; };
+		0E39FD85195DB5A100E944CD /* ZRCMethodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E39FD84195DB5A100E944CD /* ZRCMethodViewController.m */; };
+		0E39FD8B195DB76F00E944CD /* ZRCObjectMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E39FD8A195DB76F00E944CD /* ZRCObjectMethod.m */; };
+		0E8DE5BF195BB7B100F9140A /* ZRCObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DE5BE195BB7B100F9140A /* ZRCObjectViewController.m */; };
+		0EFAEFB3195B8B88003967A5 /* ZRCPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB2195B8B88003967A5 /* ZRCPlacesTableViewController.m */; };
+		0EFAEFB6195BA7A0003967A5 /* Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB5195BA79F003967A5 /* Object.m */; };
+		0EFAEFB9195BA7B8003967A5 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB8195BA7B8003967A5 /* Place.m */; };
+		1A9F7F34314C4B5FA2C5A5FF /* libPods-OSAv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFAEF38D5134E4DA05D71E1 /* libPods-OSAv3.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +65,20 @@
 		0E2A53C7195B898F00987B3C /* OSAv3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSAv3Tests-Info.plist"; sourceTree = "<group>"; };
 		0E2A53C9195B898F00987B3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E2A53CB195B898F00987B3C /* OSAv3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSAv3Tests.m; sourceTree = "<group>"; };
+		0E39FD83195DB5A000E944CD /* ZRCMethodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCMethodViewController.h; sourceTree = "<group>"; };
+		0E39FD84195DB5A100E944CD /* ZRCMethodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCMethodViewController.m; sourceTree = "<group>"; };
+		0E39FD89195DB76F00E944CD /* ZRCObjectMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCObjectMethod.h; sourceTree = "<group>"; };
+		0E39FD8A195DB76F00E944CD /* ZRCObjectMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCObjectMethod.m; sourceTree = "<group>"; };
+		0E8DE5BD195BB7B100F9140A /* ZRCObjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCObjectViewController.h; sourceTree = "<group>"; };
+		0E8DE5BE195BB7B100F9140A /* ZRCObjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCObjectViewController.m; sourceTree = "<group>"; };
+		0EFAEFB1195B8B88003967A5 /* ZRCPlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCPlacesTableViewController.h; sourceTree = "<group>"; };
+		0EFAEFB2195B8B88003967A5 /* ZRCPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCPlacesTableViewController.m; sourceTree = "<group>"; };
+		0EFAEFB4195BA79F003967A5 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		0EFAEFB5195BA79F003967A5 /* Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Object.m; sourceTree = "<group>"; };
+		0EFAEFB7195BA7B8003967A5 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		0EFAEFB8195BA7B8003967A5 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		9DFAEF38D5134E4DA05D71E1 /* libPods-OSAv3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OSAv3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59662DD3A1A4506BA54AEE2 /* Pods-OSAv3.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSAv3.xcconfig"; path = "Pods/Pods-OSAv3.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +89,7 @@
 				0E2A539D195B898E00987B3C /* CoreGraphics.framework in Frameworks */,
 				0E2A539F195B898E00987B3C /* UIKit.framework in Frameworks */,
 				0E2A539B195B898E00987B3C /* Foundation.framework in Frameworks */,
+				1A9F7F34314C4B5FA2C5A5FF /* libPods-OSAv3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +113,7 @@
 				0E2A53C5195B898F00987B3C /* OSAv3Tests */,
 				0E2A5399195B898E00987B3C /* Frameworks */,
 				0E2A5398195B898E00987B3C /* Products */,
+				B59662DD3A1A4506BA54AEE2 /* Pods-OSAv3.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +133,7 @@
 				0E2A539C195B898E00987B3C /* CoreGraphics.framework */,
 				0E2A539E195B898E00987B3C /* UIKit.framework */,
 				0E2A53BF195B898F00987B3C /* XCTest.framework */,
+				9DFAEF38D5134E4DA05D71E1 /* libPods-OSAv3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +144,18 @@
 				0E2A53A9195B898E00987B3C /* ZRCAppDelegate.h */,
 				0E2A53AA195B898E00987B3C /* ZRCAppDelegate.m */,
 				0E2A53AC195B898F00987B3C /* Main_iPhone.storyboard */,
+				0E39FD83195DB5A000E944CD /* ZRCMethodViewController.h */,
+				0E39FD84195DB5A100E944CD /* ZRCMethodViewController.m */,
+				0EFAEFB1195B8B88003967A5 /* ZRCPlacesTableViewController.h */,
+				0EFAEFB2195B8B88003967A5 /* ZRCPlacesTableViewController.m */,
+				0E8DE5BD195BB7B100F9140A /* ZRCObjectViewController.h */,
+				0E8DE5BE195BB7B100F9140A /* ZRCObjectViewController.m */,
+				0EFAEFB4195BA79F003967A5 /* Object.h */,
+				0EFAEFB5195BA79F003967A5 /* Object.m */,
+				0EFAEFB7195BA7B8003967A5 /* Place.h */,
+				0EFAEFB8195BA7B8003967A5 /* Place.m */,
+				0E39FD89195DB76F00E944CD /* ZRCObjectMethod.h */,
+				0E39FD8A195DB76F00E944CD /* ZRCObjectMethod.m */,
 				0E2A53AF195B898F00987B3C /* Main_iPad.storyboard */,
 				0E2A53B2195B898F00987B3C /* ZRCFirstViewController.h */,
 				0E2A53B3195B898F00987B3C /* ZRCFirstViewController.m */,
@@ -167,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E2A53CF195B898F00987B3C /* Build configuration list for PBXNativeTarget "OSAv3" */;
 			buildPhases = (
+				AE52AF12210840F194A859BC /* Check Pods Manifest.lock */,
 				0E2A5393195B898E00987B3C /* Sources */,
 				0E2A5394195B898E00987B3C /* Frameworks */,
 				0E2A5395195B898E00987B3C /* Resources */,
+				9C08AC644BD04E03A9534985 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,15 +292,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9C08AC644BD04E03A9534985 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-OSAv3-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE52AF12210840F194A859BC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E2A5393195B898E00987B3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFAEFB6195BA7A0003967A5 /* Object.m in Sources */,
+				0E8DE5BF195BB7B100F9140A /* ZRCObjectViewController.m in Sources */,
 				0E2A53B4195B898F00987B3C /* ZRCFirstViewController.m in Sources */,
+				0EFAEFB9195BA7B8003967A5 /* Place.m in Sources */,
 				0E2A53AB195B898E00987B3C /* ZRCAppDelegate.m in Sources */,
+				0EFAEFB3195B8B88003967A5 /* ZRCPlacesTableViewController.m in Sources */,
 				0E2A53B7195B898F00987B3C /* ZRCSecondViewController.m in Sources */,
+				0E39FD8B195DB76F00E944CD /* ZRCObjectMethod.m in Sources */,
 				0E2A53A7195B898E00987B3C /* main.m in Sources */,
+				0E39FD85195DB5A100E944CD /* ZRCMethodViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +471,7 @@
 		};
 		0E2A53D0195B898F00987B3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B59662DD3A1A4506BA54AEE2 /* Pods-OSAv3.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -407,6 +485,7 @@
 		};
 		0E2A53D1195B898F00987B3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B59662DD3A1A4506BA54AEE2 /* Pods-OSAv3.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -477,6 +556,7 @@
 				0E2A53D1195B898F00987B3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E2A53D2195B898F00987B3C /* Build configuration list for PBXNativeTarget "OSAv3Tests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +565,7 @@
 				0E2A53D4195B898F00987B3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
