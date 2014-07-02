@@ -27,6 +27,7 @@
 		0E39FD8B195DB76F00E944CD /* ZRCObjectMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E39FD8A195DB76F00E944CD /* ZRCObjectMethod.m */; };
 		0E8DE5BF195BB7B100F9140A /* ZRCObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DE5BE195BB7B100F9140A /* ZRCObjectViewController.m */; };
 		0E9C60AF1964653300247A2C /* ZRCHomeAutomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9C60AE1964653300247A2C /* ZRCHomeAutomationViewController.m */; };
+		0E9C60B21964A09800247A2C /* User Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E9C60B01964A09800247A2C /* User Data.xcdatamodeld */; };
 		0EFAEFB3195B8B88003967A5 /* ZRCPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB2195B8B88003967A5 /* ZRCPlacesTableViewController.m */; };
 		0EFAEFB6195BA7A0003967A5 /* Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB5195BA79F003967A5 /* Object.m */; };
 		0EFAEFB9195BA7B8003967A5 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAEFB8195BA7B8003967A5 /* Place.m */; };
@@ -74,6 +75,7 @@
 		0E8DE5BE195BB7B100F9140A /* ZRCObjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCObjectViewController.m; sourceTree = "<group>"; };
 		0E9C60AD1964653300247A2C /* ZRCHomeAutomationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCHomeAutomationViewController.h; sourceTree = "<group>"; };
 		0E9C60AE1964653300247A2C /* ZRCHomeAutomationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCHomeAutomationViewController.m; sourceTree = "<group>"; };
+		0E9C60B11964A09800247A2C /* User Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "User Data.xcdatamodel"; sourceTree = "<group>"; };
 		0EFAEFB1195B8B88003967A5 /* ZRCPlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCPlacesTableViewController.h; sourceTree = "<group>"; };
 		0EFAEFB2195B8B88003967A5 /* ZRCPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCPlacesTableViewController.m; sourceTree = "<group>"; };
 		0EFAEFB4195BA79F003967A5 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				0E2A53A9195B898E00987B3C /* ZRCAppDelegate.h */,
+				0E9C60B01964A09800247A2C /* User Data.xcdatamodeld */,
 				0E2A53AA195B898E00987B3C /* ZRCAppDelegate.m */,
 				0E2A53AC195B898F00987B3C /* Main_iPhone.storyboard */,
 				0E9C60AD1964653300247A2C /* ZRCHomeAutomationViewController.h */,
@@ -338,6 +341,7 @@
 				0EFAEFB6195BA7A0003967A5 /* Object.m in Sources */,
 				0E8DE5BF195BB7B100F9140A /* ZRCObjectViewController.m in Sources */,
 				0E9C60AF1964653300247A2C /* ZRCHomeAutomationViewController.m in Sources */,
+				0E9C60B21964A09800247A2C /* User Data.xcdatamodeld in Sources */,
 				0E2A53B4195B898F00987B3C /* ZRCFirstViewController.m in Sources */,
 				0EFAEFB9195BA7B8003967A5 /* Place.m in Sources */,
 				0E2A53AB195B898E00987B3C /* ZRCAppDelegate.m in Sources */,
@@ -576,6 +580,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0E9C60B01964A09800247A2C /* User Data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0E9C60B11964A09800247A2C /* User Data.xcdatamodel */,
+			);
+			currentVersion = 0E9C60B11964A09800247A2C /* User Data.xcdatamodel */;
+			path = "User Data.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0E2A538F195B898E00987B3C /* Project object */;
 }

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ZRCSecondViewController : UIViewController
+@interface ZRCSecondViewController : UIViewController<CLLocationManagerDelegate, UITextFieldDelegate>
 
 @end
