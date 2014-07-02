@@ -42,7 +42,7 @@
                             <constraint firstAttribute="centerY" secondItem="DcM-Fx-MKR" secondAttribute="centerY" id="lHZ-e8-ii2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="first" id="Z7h-1E-pvt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +67,7 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Places Table View Controller - Root View Controller-->
+        <!--Places Table View Controller - Places-->
         <scene sceneID="AQH-hc-mHn">
             <objects>
                 <tableViewController id="F7u-XH-xtY" customClass="ZRCPlacesTableViewController" sceneMemberID="viewController">
@@ -93,7 +93,7 @@
                             <outlet property="delegate" destination="F7u-XH-xtY" id="1i7-Ga-gdc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="pxw-oi-EPx"/>
+                    <navigationItem key="navigationItem" title="Places" id="pxw-oi-EPx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dao-I7-WHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,11 +160,11 @@
             </objects>
             <point key="canvasLocation" x="1164" y="1043"/>
         </scene>
-        <!--Navigation Controller - Automation-->
+        <!--Home Automation View Controller - Automation-->
         <scene sceneID="7Bn-Oa-h39">
             <objects>
-                <navigationController definesPresentationContext="YES" id="ei3-iL-ZEs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Automation" id="HrG-OZ-btP"/>
+                <navigationController definesPresentationContext="YES" id="ei3-iL-ZEs" customClass="ZRCHomeAutomationViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Automation" image="second" id="HrG-OZ-btP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aSD-0j-Fir">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -178,6 +178,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -40,6 +40,7 @@ NSString *pathPattern;
     
     
     [super viewDidLoad];
+    self.title = object.Name;
     [self addMethodRestKit];
     [self loadMethods];
     

@@ -42,6 +42,7 @@ NSArray *objects2;
     
     
     [super viewDidLoad];
+    self.title = place.Container;
     [self addObjectRestKit];
     [self loadObjects];
     
