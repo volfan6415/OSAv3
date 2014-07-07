@@ -15,7 +15,6 @@
 		0E2A53AB195B898E00987B3C /* ZRCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A53AA195B898E00987B3C /* ZRCAppDelegate.m */; };
 		0E2A53AE195B898F00987B3C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A53AC195B898F00987B3C /* Main_iPhone.storyboard */; };
 		0E2A53B1195B898F00987B3C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A53AF195B898F00987B3C /* Main_iPad.storyboard */; };
-		0E2A53B4195B898F00987B3C /* ZRCFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A53B3195B898F00987B3C /* ZRCFirstViewController.m */; };
 		0E2A53B7195B898F00987B3C /* ZRCSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A53B6195B898F00987B3C /* ZRCSecondViewController.m */; };
 		0E2A53B9195B898F00987B3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E2A53B8195B898F00987B3C /* Images.xcassets */; };
 		0E2A53C0195B898F00987B3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2A53BF195B898F00987B3C /* XCTest.framework */; };
@@ -58,8 +57,6 @@
 		0E2A53AA195B898E00987B3C /* ZRCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZRCAppDelegate.m; sourceTree = "<group>"; };
 		0E2A53AD195B898F00987B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0E2A53B0195B898F00987B3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		0E2A53B2195B898F00987B3C /* ZRCFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZRCFirstViewController.h; sourceTree = "<group>"; };
-		0E2A53B3195B898F00987B3C /* ZRCFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZRCFirstViewController.m; sourceTree = "<group>"; };
 		0E2A53B5195B898F00987B3C /* ZRCSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZRCSecondViewController.h; sourceTree = "<group>"; };
 		0E2A53B6195B898F00987B3C /* ZRCSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZRCSecondViewController.m; sourceTree = "<group>"; };
 		0E2A53B8195B898F00987B3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -170,8 +167,6 @@
 				0E39FD89195DB76F00E944CD /* ZRCObjectMethod.h */,
 				0E39FD8A195DB76F00E944CD /* ZRCObjectMethod.m */,
 				0E2A53AF195B898F00987B3C /* Main_iPad.storyboard */,
-				0E2A53B2195B898F00987B3C /* ZRCFirstViewController.h */,
-				0E2A53B3195B898F00987B3C /* ZRCFirstViewController.m */,
 				0E2A53B5195B898F00987B3C /* ZRCSecondViewController.h */,
 				0E2A53B6195B898F00987B3C /* ZRCSecondViewController.m */,
 				0E2A53B8195B898F00987B3C /* Images.xcassets */,
@@ -347,7 +342,6 @@
 				0E8DE5BF195BB7B100F9140A /* ZRCObjectViewController.m in Sources */,
 				0E9C60AF1964653300247A2C /* ZRCHomeAutomationViewController.m in Sources */,
 				0E9C60B21964A09800247A2C /* User Data.xcdatamodeld in Sources */,
-				0E2A53B4195B898F00987B3C /* ZRCFirstViewController.m in Sources */,
 				0E9F6BE4196A5EC80056D3B4 /* ZRCState.m in Sources */,
 				0EFAEFB9195BA7B8003967A5 /* Place.m in Sources */,
 				0E2A53AB195B898E00987B3C /* ZRCAppDelegate.m in Sources */,

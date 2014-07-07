@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *Container;
 @property (nonatomic, strong) NSString *Name;
 @property (nonatomic, strong) ZRCState *State;
+@property (nonatomic, strong) ZRCState *BaseType;
 
 
 

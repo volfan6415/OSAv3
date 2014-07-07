@@ -81,7 +81,7 @@ NSArray *objects2;
     
     // setup object mappings
     RKObjectMapping *ObjectMapping = [RKObjectMapping mappingForClass:[Object class]];
-    [ObjectMapping addAttributeMappingsFromArray:@[@"Name"]];
+    [ObjectMapping addAttributeMappingsFromArray:@[@"Name", @"BaseType"]];
     [ObjectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"State" toKeyPath:@"State" withMapping:stateMapping]];
     
     // register mappings with the provider using a response descriptor
@@ -293,7 +293,7 @@ NSArray *objects2;
     str2 = [str2 stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
     
     pathPattern = [str stringByAppendingString: str2];
-    NSLog(@"Value of string is %@", pathPattern);
+   // NSLog(@"Value of string is %@", pathPattern);
     
     
     [[RKObjectManager sharedManager] postObject:nil path:pathPattern parameters:nil success:nil failure:nil];
@@ -303,7 +303,7 @@ NSArray *objects2;
 -(BOOL) getState: (Object*) switchedObject {
     ZRCState *state = switchedObject.State;
 
-    NSLog(state.Value);
+    //NSLog(state.Value);
     
 
     return ([state.Value isEqualToString:@"ON"]);

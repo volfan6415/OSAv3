@@ -7,6 +7,7 @@
 //
 
 #import "ZRCSecondViewController.h"
+#import <RestKit/RestKit.h>
 
 @interface ZRCSecondViewController ()
 
@@ -17,7 +18,7 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManger;
 @property (strong, nonatomic) IBOutlet UITextField *url;
-
+@property (strong, nonatomic) IBOutlet UITextField *osaUserName;
 @property (strong, nonatomic) IBOutlet UILabel *latitude;
 @property (strong, nonatomic) IBOutlet UILabel *longitude;
 @property (strong, nonatomic) IBOutlet UILabel *curent_latitude;
@@ -48,6 +49,7 @@
     //display the current home defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.url.text = [defaults objectForKey:@"OSA_URL"];
+    self.osaUserName.text = [defaults objectForKey:@"OSA_UserName"];
     self.latitude.text = [defaults objectForKey:@"OSA_Home_Latitude"];
     self.longitude.text = [defaults objectForKey:@"OSA_Home_Longitude"];
     
@@ -114,6 +116,8 @@
     //NSLog(self.url.text);
     [defaults setObject:self.url.text forKey:@"OSA_URL"];
     [_url resignFirstResponder];
+    [defaults setObject:self.osaUserName.text forKey:@"OSA_UserName"];
+    [_osaUserName resignFirstResponder];
     [defaults synchronize];
     
 }
@@ -123,8 +127,8 @@
     [defaults setObject:self.curent_latitude.text forKey:@"OSA_Home_Latitude"];
     [defaults setObject:self.curent_longitude.text forKey:@"OSA_Home_Longitude"];
     [defaults synchronize];
-    self.latitude.text = self.curent_latitude.text;
-    self.longitude.text = self.curent_longitude.text;
+    _latitude.text = self.curent_latitude.text;
+    _longitude.text = self.curent_longitude.text;
     
     NSArray *objects = [NSArray arrayWithObjects:@"region", self.curent_latitude.text, self.curent_longitude.text, nil];
     NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
@@ -226,6 +230,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Region" message:@"Entered Region." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alert show];
      self.whereAreYou.text = @"In Region";
+    [self setUserRegion:@"ON"];
     return;
 }
 
@@ -234,6 +239,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Region" message:@"Left Region." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alert show];
      self.whereAreYou.text = @"Outside Region";
+    [self setUserRegion:@"OFF"];
     
     return;
 }
@@ -245,12 +251,27 @@
 - (void)locationManager:(CLLocationManager *)manager
       didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Region" message:@"In Region." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alert show];
-    NSLog(@"In Region");
-    self.whereAreYou.text = @"In Region";
+
     return;
 }
 
+-(void)setUserRegion: (NSString *) location{
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *str = @"/api/object/";
+    //NSLog(@"Value of string is %@", [self.detailItem valueForKey:@"container"]);
+    NSString *str2 = [[defaults objectForKey:@"OSA_UserName"] stringByAppendingString: @"/"];
+    str2 = [str2 stringByAppendingString: location];
+    NSString *charactersToEscape = @"!*'();:@$,?%#[]\" ";
+    NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:charactersToEscape] invertedSet];
+    str2 = [str2 stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
+    
+    NSString *pathPattern = [str stringByAppendingString: str2];
+    // NSLog(@"Value of string is %@", pathPattern);
+    
+    
+    [[RKObjectManager sharedManager] postObject:nil path:pathPattern parameters:nil success:nil failure:nil];
+
+}
 
 @end

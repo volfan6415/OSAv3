@@ -35,6 +35,8 @@ NSArray *places;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureRestKit];
+    [self loadPlaces];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,14 +44,19 @@ NSArray *places;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [self configureRestKit];
-    [self loadPlaces];
+    
+   
 }
+
+
 
 - (void)configureRestKit
 {
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://zchristiansen.homeserver.com:8732"];
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSURL *baseURL = [NSURL URLWithString:[@"http://" stringByAppendingString:[defaults objectForKey:@"OSA_URL"]]];
+    
+    
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
