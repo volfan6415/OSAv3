@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZRCState.h"
 
 @interface Object : NSObject
 @property (nonatomic, strong) NSString *Container;
 @property (nonatomic, strong) NSString *Name;
+@property (nonatomic, strong) ZRCState *State;
+
 
 
 @end

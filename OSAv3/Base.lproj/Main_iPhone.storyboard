@@ -84,6 +84,12 @@
                                     <action selector="saveServer:" destination="QUy-BD-bpt" eventType="touchUpInside" id="xxn-AM-tNU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Where Are You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC2-RW-A91">
+                                <rect key="frame" x="104" y="462" width="113" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -95,6 +101,7 @@
                         <outlet property="latitude" destination="Gb7-sZ-mrZ" id="D0X-8N-VqI"/>
                         <outlet property="longitude" destination="nF8-VX-FzO" id="3Bp-EQ-H2p"/>
                         <outlet property="url" destination="Exd-De-xlK" id="djh-zd-DGZ"/>
+                        <outlet property="whereAreYou" destination="dC2-RW-A91" id="25L-64-iOX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
@@ -112,8 +119,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                         <segue destination="ei3-iL-ZEs" kind="relationship" relationship="viewControllers" id="AjR-PN-qBK"/>
+                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
