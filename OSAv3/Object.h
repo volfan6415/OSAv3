@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *Name;
 @property (nonatomic, strong) ZRCState *State;
 @property (nonatomic, strong) ZRCState *BaseType;
+@property (nonatomic, strong) NSArray *Methods;
 
 
 

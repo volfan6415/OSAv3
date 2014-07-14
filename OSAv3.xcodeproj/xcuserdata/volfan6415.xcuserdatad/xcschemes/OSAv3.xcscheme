@@ -69,7 +69,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-OSA_URL &quot;zchristiansen.homeserver.com:8732&quot;"
+            argument = "-OSA_URL &quot;192.168.1.160:8732&quot;"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>

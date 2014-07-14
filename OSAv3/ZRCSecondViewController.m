@@ -16,7 +16,7 @@
 
 
 
-@property (strong, nonatomic) CLLocationManager *locationManger;
+//@property (strong, nonatomic)
 @property (strong, nonatomic) IBOutlet UITextField *url;
 @property (strong, nonatomic) IBOutlet UITextField *osaUserName;
 @property (strong, nonatomic) IBOutlet UILabel *latitude;
@@ -25,27 +25,26 @@
 @property (strong, nonatomic) IBOutlet UILabel *curent_longitude;
 @property (strong, nonatomic) NSNumber *radius;
 @property (strong, nonatomic) IBOutlet UILabel *whereAreYou;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
 
-@implementation ZRCSecondViewController
+@implementation ZRCSecondViewController{
+
+CLLocationManager *locationManger;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
+}
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self intializeLocationManager];
+    geocoder = [[CLGeocoder alloc] init];
 
-    
-       }
--(void)awakeFromNib{
-    [super awakeFromNib];
-    
-    
-}
-
-- (void) viewWillAppear:(BOOL) animated{
-  
     //display the current home defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.url.text = [defaults objectForKey:@"OSA_URL"];
@@ -63,20 +62,41 @@
     
     
     
+    
     NSArray *objects = [NSArray arrayWithObjects:@"region", self.latitude.text, self.longitude.text, nil];
     
     NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
     
     NSDictionary *geofence = [NSDictionary dictionaryWithObjects: objects  forKeys: keys];
     
-    [_locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
+    [locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
+    
+    CLLocation *homeLocation = [[CLLocation alloc] initWithLatitude:[self.latitude.text doubleValue] longitude:[self.longitude.text doubleValue]];
+    
+    [geocoder reverseGeocodeLocation:homeLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            placemark = [placemarks lastObject];
+            _addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
+                                  placemark.subThoroughfare, placemark.thoroughfare,
+                                  placemark.postalCode, placemark.locality,
+                                  placemark.administrativeArea,
+                                  placemark.country];
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    } ];
+    
+       }
+-(void)awakeFromNib{
+    [super awakeFromNib];
     
     
-    
-    
-    
+}
 
-    
+- (void) viewWillAppear:(BOOL) animated{
+  
+ 
 }
 
 -(void)intializeLocationManager{
@@ -97,10 +117,10 @@
     
     //display the users current location
     
-    _locationManger = [[CLLocationManager alloc] init];
-    _locationManger.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManger.delegate = self;
-    [_locationManger startUpdatingLocation];
+    locationManger = [[CLLocationManager alloc] init];
+    locationManger.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManger.delegate = self;
+  
 }
 
 
@@ -123,19 +143,11 @@
 }
 
 - (IBAction)updateHome:(UIButton *)sender {
-   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.curent_latitude.text forKey:@"OSA_Home_Latitude"];
-    [defaults setObject:self.curent_longitude.text forKey:@"OSA_Home_Longitude"];
-    [defaults synchronize];
-    _latitude.text = self.curent_latitude.text;
-    _longitude.text = self.curent_longitude.text;
+     [locationManger startUpdatingLocation];
     
-    NSArray *objects = [NSArray arrayWithObjects:@"region", self.curent_latitude.text, self.curent_longitude.text, nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
+  
     
-    NSDictionary *geofence = [NSDictionary dictionaryWithObjects: objects  forKeys: keys];
     
-    [_locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
     
     
 }
@@ -188,6 +200,36 @@
     _distance.text = tripString;
      
      */
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.curent_latitude.text forKey:@"OSA_Home_Latitude"];
+    [defaults setObject:self.curent_longitude.text forKey:@"OSA_Home_Longitude"];
+    [defaults synchronize];
+    _latitude.text = self.curent_latitude.text;
+    _longitude.text = self.curent_longitude.text;
+    
+    NSArray *objects = [NSArray arrayWithObjects:@"region", self.curent_latitude.text, self.curent_longitude.text, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
+    
+    NSDictionary *geofence = [NSDictionary dictionaryWithObjects: objects  forKeys: keys];
+    
+    [locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
+    [locationManger stopUpdatingLocation];
+
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            placemark = [placemarks lastObject];
+            _addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
+                                  placemark.subThoroughfare, placemark.thoroughfare,
+                                  placemark.postalCode, placemark.locality,
+                                  placemark.administrativeArea,
+                                  placemark.country];
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    } ];
+    
+
 }
 
 
@@ -199,9 +241,9 @@
     CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
     CLLocationDistance regionRadius = 300;
     
-    if(regionRadius > _locationManger.maximumRegionMonitoringDistance)
+    if(regionRadius > locationManger.maximumRegionMonitoringDistance)
     {
-        regionRadius = _locationManger.maximumRegionMonitoringDistance;
+        regionRadius = locationManger.maximumRegionMonitoringDistance;
     }
 
     

@@ -13,6 +13,7 @@
 #import <RestKit/RestKit.h>
 #import "ZRCMethodViewController.h"
 #import "ZRCState.h"
+#import "ZRCObjectMethod.h"
 
 @interface ZRCObjectViewController ()
 
@@ -79,10 +80,14 @@ NSArray *objects2;
     RKObjectMapping *stateMapping = [RKObjectMapping mappingForClass:[ZRCState class]];
     [stateMapping addAttributeMappingsFromArray:@[@"Value"]];
     
+
+    
     // setup object mappings
     RKObjectMapping *ObjectMapping = [RKObjectMapping mappingForClass:[Object class]];
     [ObjectMapping addAttributeMappingsFromArray:@[@"Name", @"BaseType"]];
     [ObjectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"State" toKeyPath:@"State" withMapping:stateMapping]];
+    
+ //   [ObjectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"Methods" toKeyPath:@"Methods" withMapping:MethodMapping]];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor2 =
@@ -306,6 +311,15 @@ NSArray *objects2;
     //NSLog(state.Value);
     
 
+    return ([state.Value isEqualToString:@"ON"]);
+}
+
+-(BOOL) stateOnOff: (Object*) switchedObject {
+    ZRCState *state = switchedObject.State;
+    
+    //NSLog(state.Value);
+    
+    
     return ([state.Value isEqualToString:@"ON"]);
 }
 
