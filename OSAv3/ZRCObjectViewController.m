@@ -84,7 +84,17 @@ NSArray *objects2;
     
     // setup object mappings
     RKObjectMapping *ObjectMapping = [RKObjectMapping mappingForClass:[Object class]];
-    [ObjectMapping addAttributeMappingsFromArray:@[@"Name", @"BaseType"]];
+    //[ObjectMapping addAttributeMappingsFromArray:@[@"Name", @"BaseType"]];
+   
+    
+    NSDictionary *objectPorpertyMappings = [NSDictionary dictionaryWithObjectsAndKeys:
+        @"Name", @"Name",
+        @"BaseType", @"BaseType",
+        @"Methods", @"Methods.@distinctUnionOfObjects.MethodName",
+        nil];
+    
+    [ObjectMapping addAttributeMappingsFromDictionary:objectPorpertyMappings];
+    
     [ObjectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"State" toKeyPath:@"State" withMapping:stateMapping]];
     
  //   [ObjectMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"Methods" toKeyPath:@"Methods" withMapping:MethodMapping]];
@@ -181,8 +191,10 @@ NSArray *objects2;
       //  return nil;
    // }
     //else{
-    UISwitch *accessorySwitch = [[UISwitch alloc]initWithFrame:CGRectZero];
+   // NSLog([self methodOnOff:object] ? @"Yes":@"NO");
+    if ([self methodOnOff:object]){
     
+    UISwitch *accessorySwitch = [[UISwitch alloc]initWithFrame:CGRectZero];
     
     if ([self getState:object]){
     [accessorySwitch setOn:YES animated:YES];
@@ -191,13 +203,15 @@ NSArray *objects2;
     [accessorySwitch setOn:NO animated:YES];
     }
     
-    
-    
     [accessorySwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
     accessorySwitch.tag = indexPath.row;
     cell.accessoryView = accessorySwitch;
+   
+    }
+    else{
+    //don't add switch if there are no ON/OFF methods
+    }
       cell.textLabel.text = object.Name;
-    
         return cell;
     //}
 }
@@ -314,13 +328,27 @@ NSArray *objects2;
     return ([state.Value isEqualToString:@"ON"]);
 }
 
--(BOOL) stateOnOff: (Object*) switchedObject {
-    ZRCState *state = switchedObject.State;
+-(BOOL) methodOnOff: (Object*) switchedObject {
     
+    NSArray *objectsMethods = switchedObject.Methods;
     //NSLog(state.Value);
     
+    BOOL returnValue = NO;
     
-    return ([state.Value isEqualToString:@"ON"]);
+    
+    for (NSString *currentMethod in objectsMethods) {
+        
+        
+       // NSLog(currentMethod);
+        if ([currentMethod isEqualToString:@"ON"] || [currentMethod isEqualToString:@"OFF"]) {
+           // NSLog(@"We got inside the if method");
+        returnValue = YES;
+        }
+        
+    }
+    
+    
+    return returnValue;
 }
 
 
