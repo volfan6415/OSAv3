@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ZRCState.h"
+#import <RestKit/RestKit.h>
+#import "Object.h"
 
 @interface Object : NSObject
 @property (nonatomic, strong) NSString *Container;
@@ -15,7 +17,10 @@
 @property (nonatomic, strong) ZRCState *State;
 @property (nonatomic, strong) ZRCState *BaseType;
 @property (nonatomic, strong) NSArray *Methods;
+@property (nonatomic, strong) NSArray *Properties;
 
+
+- (void) setOSAObjectProperties:(void (^)(RKObjectRequestOperation *operation, RKMappingResult *mappingResult))success;
 
 
 @end

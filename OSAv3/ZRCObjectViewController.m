@@ -59,7 +59,7 @@ NSArray *objects2;
 
 - (void)addObjectRestKit
 {
-   
+   //setup the pathPattern
     NSString *str = @"/api/objects/container/";
     //NSLog(@"Value of string is %@", [self.detailItem valueForKey:@"container"]);
     NSString *str2 = place.Container;
@@ -68,13 +68,7 @@ NSArray *objects2;
     str2 = [str2 stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
     
     pathPattern = [str stringByAppendingString: str2];
-    NSLog(@"Value of string is %@", pathPattern);
-    // initialize AFNetworking HTTPClient
-   // NSURL *baseURL = [NSURL URLWithString:@"http://zchristiansen.homeserver.com:8732"];
-   // AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    
-    // initialize RestKit
-  //  RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    //NSLog(@"Value of string is %@", pathPattern);
     
     //setup state mapping
     RKObjectMapping *stateMapping = [RKObjectMapping mappingForClass:[ZRCState class]];
@@ -299,10 +293,7 @@ NSArray *objects2;
 }
 
 - (void) pushObjectSwitch: (Object *) switchedObject switchPosition: (NSString *) switchPoition{
-
-
     NSString *methodName = switchPoition;
-    
     NSString *str = @"/api/object/";
     //NSLog(@"Value of string is %@", [self.detailItem valueForKey:@"container"]);
     NSString *str2 = [switchedObject.Name stringByAppendingString: @"/"];

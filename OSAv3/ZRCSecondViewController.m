@@ -21,9 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *osaUserName;
 @property (strong, nonatomic) IBOutlet UILabel *latitude;
 @property (strong, nonatomic) IBOutlet UILabel *longitude;
-@property (strong, nonatomic) IBOutlet UILabel *curent_latitude;
-@property (strong, nonatomic) IBOutlet UILabel *curent_longitude;
-@property (strong, nonatomic) NSNumber *radius;
+
 @property (strong, nonatomic) IBOutlet UILabel *whereAreYou;
 @property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 
@@ -42,50 +40,11 @@ CLLocationManager *locationManger;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self intializeLocationManager];
-    geocoder = [[CLGeocoder alloc] init];
 
     //display the current home defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.url.text = [defaults objectForKey:@"OSA_URL"];
     self.osaUserName.text = [defaults objectForKey:@"OSA_UserName"];
-    self.latitude.text = [defaults objectForKey:@"OSA_Home_Latitude"];
-    self.longitude.text = [defaults objectForKey:@"OSA_Home_Longitude"];
-    
-    
-    if(self.latitude.text == nil){
-        self.latitude.text = @"0.000000";
-    }
-    if (self.longitude.text == nil){
-        self.longitude.text = @"0.000000";
-    }
-    
-    
-    
-    
-    NSArray *objects = [NSArray arrayWithObjects:@"region", self.latitude.text, self.longitude.text, nil];
-    
-    NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
-    
-    NSDictionary *geofence = [NSDictionary dictionaryWithObjects: objects  forKeys: keys];
-    
-    [locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
-    
-    CLLocation *homeLocation = [[CLLocation alloc] initWithLatitude:[self.latitude.text doubleValue] longitude:[self.longitude.text doubleValue]];
-    
-    [geocoder reverseGeocodeLocation:homeLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0) {
-            placemark = [placemarks lastObject];
-            _addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
-                                  placemark.subThoroughfare, placemark.thoroughfare,
-                                  placemark.postalCode, placemark.locality,
-                                  placemark.administrativeArea,
-                                  placemark.country];
-        } else {
-            NSLog(@"%@", error.debugDescription);
-        }
-    } ];
     
        }
 -(void)awakeFromNib{
@@ -99,29 +58,6 @@ CLLocationManager *locationManger;
  
 }
 
--(void)intializeLocationManager{
-    //check to see if location services are enabled
-    if(![CLLocationManager locationServicesEnabled]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"You need locations services to fully use this app." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-                
-    }
-    if(![CLLocationManager isMonitoringAvailableForClass:[CLRegion class]])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Region View" message:@"Region view is not available for this class." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
-    
-    
-    //display the users current location
-    
-    locationManger = [[CLLocationManager alloc] init];
-    locationManger.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManger.delegate = self;
-  
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -142,128 +78,8 @@ CLLocationManager *locationManger;
     
 }
 
-- (IBAction)updateHome:(UIButton *)sender {
-     [locationManger startUpdatingLocation];
-    
-  
-    
-    
-    
-    
-}
 
 
-#pragma mark -
-#pragma mark CLLocationManagerDelegate
-
--(void)locationManager:(CLLocationManager *)manager
-   didUpdateToLocation:(CLLocation *)newLocation
-          fromLocation:(CLLocation *)oldLocation
-{
-    NSString *currentLatitude = [[NSString alloc]
-                                 initWithFormat:@"%+.6f",
-                                 newLocation.coordinate.latitude];
-    _curent_latitude.text = currentLatitude;
-    
-    NSString *currentLongitude = [[NSString alloc]
-                                  initWithFormat:@"%+.6f",
-                                  newLocation.coordinate.longitude];
-    _curent_longitude.text = currentLongitude;
-  
-    /*
-    NSString *currentHorizontalAccuracy =
-    [[NSString alloc]
-     initWithFormat:@"%+.6f",
-     newLocation.horizontalAccuracy];
-    _horizontalAccuracy.text = currentHorizontalAccuracy;
-    
-    NSString *currentAltitude = [[NSString alloc]
-                                 initWithFormat:@"%+.6f",
-                                 newLocation.altitude];
-    _altitude.text = currentAltitude;
-    
-    NSString *currentVerticalAccuracy =
-    [[NSString alloc]
-     initWithFormat:@"%+.6f",
-     newLocation.verticalAccuracy];
-    _verticalAccuracy.text = currentVerticalAccuracy;
-    
-    if (_startLocation == nil)
-        _startLocation = newLocation;
-    
-    CLLocationDistance distanceBetween = [newLocation
-                                          distanceFromLocation:_startLocation];
-    
-    NSString *tripString = [[NSString alloc]
-                            initWithFormat:@"%f",
-                            distanceBetween];
-    _distance.text = tripString;
-     
-     */
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.curent_latitude.text forKey:@"OSA_Home_Latitude"];
-    [defaults setObject:self.curent_longitude.text forKey:@"OSA_Home_Longitude"];
-    [defaults synchronize];
-    _latitude.text = self.curent_latitude.text;
-    _longitude.text = self.curent_longitude.text;
-    
-    NSArray *objects = [NSArray arrayWithObjects:@"region", self.curent_latitude.text, self.curent_longitude.text, nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"identifier", @"latitude", @"longitude", nil];
-    
-    NSDictionary *geofence = [NSDictionary dictionaryWithObjects: objects  forKeys: keys];
-    
-    [locationManger startMonitoringForRegion: [self dictToRegion:geofence]];
-    [locationManger stopUpdatingLocation];
-
-    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0) {
-            placemark = [placemarks lastObject];
-            _addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
-                                  placemark.subThoroughfare, placemark.thoroughfare,
-                                  placemark.postalCode, placemark.locality,
-                                  placemark.administrativeArea,
-                                  placemark.country];
-        } else {
-            NSLog(@"%@", error.debugDescription);
-        }
-    } ];
-    
-
-}
-
-
-- (CLRegion*)dictToRegion:(NSDictionary*)dictionary
-{
-    NSString *identifier = [dictionary valueForKey:@"identifier"];
-    CLLocationDegrees latitude = [[dictionary valueForKey:@"latitude"] doubleValue];
-    CLLocationDegrees longitude =[[dictionary valueForKey:@"longitude"] doubleValue];
-    CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
-    CLLocationDistance regionRadius = 300;
-    
-    if(regionRadius > locationManger.maximumRegionMonitoringDistance)
-    {
-        regionRadius = locationManger.maximumRegionMonitoringDistance;
-    }
-
-    
-    NSString *version = [[UIDevice currentDevice] systemVersion];
-    CLRegion * region =nil;
-    
-    if([version floatValue] >= 7.0f) //for iOS7
-    {
-        region =  [[CLCircularRegion alloc] initWithCenter:centerCoordinate
-                                                    radius:regionRadius
-                                                identifier:identifier];
-    }
-    else // iOS 7 below
-    {
-        region = [[CLRegion alloc] initCircularRegionWithCenter:centerCoordinate
-                                                         radius:regionRadius
-                                                     identifier:identifier];
-    }
-    return  region;
-}
 
 
 

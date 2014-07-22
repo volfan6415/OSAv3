@@ -10,6 +10,7 @@
 #import "ZRCObjectMethod.h"
 #import <RestKit/RestKit.h>
 #import "Object.h"
+#import "ZRCRegionsList.h"
 
 @interface ZRCMethodViewController ()
 
