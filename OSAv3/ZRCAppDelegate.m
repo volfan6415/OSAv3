@@ -18,7 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    viewController = (RegionsViewController *) [mainStoryBoard instantiateViewControllerWithIdentifier:@"RegionsViewController"];
   
   
     // Override point for customization after application launch.

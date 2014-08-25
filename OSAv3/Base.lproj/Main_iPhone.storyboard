@@ -19,12 +19,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lX-ln-uGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1658"/>
+            <point key="canvasLocation" x="4" y="-1642"/>
         </scene>
         <!--Regions View Controller - Item-->
         <scene sceneID="5V9-Ng-TPK">
             <objects>
-                <viewController id="E08-MZ-31B" customClass="RegionsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E08-MZ-31B" customClass="RegionsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QLV-0z-wd9"/>
                         <viewControllerLayoutGuide type="bottom" id="Ucx-YW-nsN"/>
@@ -62,6 +62,11 @@
                                 <items>
                                     <navigationItem id="N5t-He-Nmw">
                                         <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="V5o-VG-rbF">
+                                            <connections>
+                                                <action selector="LoadOSAOBjects:" destination="E08-MZ-31B" id="tqR-1d-EZy"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="S4n-HL-r28">
                                             <rect key="frame" x="95" y="7" width="131" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFh-8s-7Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="-613"/>
+            <point key="canvasLocation" x="743" y="-1642"/>
         </scene>
         <!--Regions List - Regions-->
         <scene sceneID="aF6-gN-ftg">
@@ -130,12 +135,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNt-sP-fVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1648" y="-615"/>
+            <point key="canvasLocation" x="1288" y="-1642"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Region - Add Region-->
         <scene sceneID="wdy-fu-T3F">
             <objects>
-                <viewController id="6T5-gk-qdo" sceneMemberID="viewController">
+                <viewController id="6T5-gk-qdo" customClass="ZRCAddRegion" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="grt-bo-31x"/>
                         <viewControllerLayoutGuide type="bottom" id="y5H-LX-OSU"/>
@@ -143,13 +148,89 @@
                     <view key="view" contentMode="scaleToFill" id="2Jd-xV-ovO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Region Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW7-sC-mCS">
+                                <rect key="frame" x="20" y="103" width="109" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hi6-7e-0Bj">
+                                <rect key="frame" x="20" y="137" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nK-ue-hDG">
+                                <rect key="frame" x="20" y="171" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Longitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNj-OJ-Z9f">
+                                <rect key="frame" x="20" y="205" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbZ-3Z-bwm">
+                                <rect key="frame" x="137" y="249" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitRegion:" destination="6T5-gk-qdo" eventType="touchUpInside" id="kO4-bi-ESN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJA-CD-Zup">
+                                <rect key="frame" x="88" y="295" width="146" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Use Current Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="useCurrentLocation:" destination="6T5-gk-qdo" eventType="touchUpInside" id="Svp-99-F3d"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C35-Y6-v6B">
+                                <rect key="frame" x="137" y="99" width="163" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qoN-9H-htH">
+                                <rect key="frame" x="137" y="133" width="163" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bem-0g-mdi">
+                                <rect key="frame" x="137" y="167" width="163" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjE-di-TlG">
+                                <rect key="frame" x="137" y="201" width="163" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fYy-Uk-yNR"/>
+                    <navigationItem key="navigationItem" title="Add Region" id="fYy-Uk-yNR"/>
+                    <connections>
+                        <outlet property="regionLatitude" destination="Bem-0g-mdi" id="WRf-uu-lmk"/>
+                        <outlet property="regionLongitude" destination="cjE-di-TlG" id="nf9-2e-xDa"/>
+                        <outlet property="regionName" destination="C35-Y6-v6B" id="R02-ed-xp5"/>
+                        <outlet property="regionRaidus" destination="qoN-9H-htH" id="jCE-Pq-N3p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSR-YI-w1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="-933"/>
+            <point key="canvasLocation" x="1772" y="-1642"/>
         </scene>
         <!--Second View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
@@ -209,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637" y="180"/>
+            <point key="canvasLocation" x="13" y="-460"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -230,7 +311,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="-594" y="-476"/>
         </scene>
         <!--Places Table View Controller - Places-->
         <scene sceneID="AQH-hc-mHn">
@@ -344,7 +425,7 @@
     </scenes>
     <resources>
         <image name="first" width="32" height="32"/>
-        <image name="map" width="29" height="29"/>
+        <image name="map" width="29" height="27"/>
         <image name="second" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

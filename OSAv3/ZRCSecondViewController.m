@@ -12,26 +12,18 @@
 @interface ZRCSecondViewController ()
 
 - (IBAction)saveServer:(UIButton *)sender;
-- (IBAction)updateHome:(UIButton *)sender;
+
 
 
 
 //@property (strong, nonatomic)
 @property (strong, nonatomic) IBOutlet UITextField *url;
 @property (strong, nonatomic) IBOutlet UITextField *osaUserName;
-@property (strong, nonatomic) IBOutlet UILabel *latitude;
-@property (strong, nonatomic) IBOutlet UILabel *longitude;
-
-@property (strong, nonatomic) IBOutlet UILabel *whereAreYou;
-@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
 
 @implementation ZRCSecondViewController{
 
-CLLocationManager *locationManger;
-    CLGeocoder *geocoder;
-    CLPlacemark *placemark;
 }
 
 
@@ -83,35 +75,6 @@ CLLocationManager *locationManger;
 
 
 
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Region" message:@"Entered Region." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alert show];
-     self.whereAreYou.text = @"In Region";
-    [self setUserRegion:@"ON"];
-    return;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Region" message:@"Left Region." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alert show];
-     self.whereAreYou.text = @"Outside Region";
-    [self setUserRegion:@"OFF"];
-    
-    return;
-}
-- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
-{
-
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-      didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
-{
-
-    return;
-}
 
 -(void)setUserRegion: (NSString *) location{
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

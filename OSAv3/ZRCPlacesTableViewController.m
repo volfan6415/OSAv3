@@ -34,7 +34,13 @@ NSArray *places;
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+   [super viewDidLoad];
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [refresh addTarget: self action: @selector(loadPlaces) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     [self configureRestKit];
     [self loadPlaces];
     
@@ -47,7 +53,11 @@ NSArray *places;
     
    
 }
+- (void)stopRefresh{
+    
+[self.refreshControl endRefreshing];
 
+}
 
 
 - (void)configureRestKit
@@ -90,7 +100,10 @@ NSArray *places;
                                            parameters:queryParams
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   places = mappingResult.array;
+                                     
                                                   [self.tableView reloadData];
+                                                  [self performSelector:@selector(stopRefresh) withObject:nil afterDelay:2.5];
+                                                  
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
